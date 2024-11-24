@@ -2,4 +2,6 @@
 {
     int Health { get; set; }
     bool IsPlayer { get; }
+
+    void CheckHealth();
 }

@@ -8,7 +8,8 @@ public class BumperTrapEffect : MonoBehaviour, ITrapEffect
     public void ExecuteEffect(CharacterMover characterMover)
     {
         Rigidbody characterRb = characterMover.GetComponent<Rigidbody>();
-        Vector3 launchDirection = new Vector3(Random.Range(-1f, 1f), 0.95f, Random.Range(-1f, 1f));
+        Vector3 launchDirection = (characterMover.transform.position - transform.position).normalized;
+        launchDirection = launchDirection + (Vector3.up * 2);
         characterRb.AddForce(launchDirection * bounceForce, ForceMode.Impulse);
         StartCoroutine(pausePlayerMovement(characterMover));
     }

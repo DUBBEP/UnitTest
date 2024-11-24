@@ -48,12 +48,14 @@ public class Trap
         {
             case TrapEffectType.Spike:
                 characterMover.Health--;
+                characterMover.CheckHealth();
                 break;
             case TrapEffectType.Bumper:
 
                 break;
             case TrapEffectType.Bomb:
                 characterMover.Health = 0;
+                characterMover.CheckHealth();
                 break;
         }
     }

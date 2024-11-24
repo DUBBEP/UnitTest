@@ -10,8 +10,8 @@ public class SpikeTrapEffect : MonoBehaviour, ITrapEffect
         Rigidbody characterRb = characterMover.GetComponent<Rigidbody>();
         Renderer characterRenderer = characterMover.GetComponent<Renderer>();
         Color characterMaterialColor = characterRenderer.material.color;
-
-        Vector3 launchDirection = new Vector3(Random.Range(-1f, 1f), 0.75f, Random.Range(-1f, 1f));
+        Vector3 launchDirection = (characterMover.transform.position - transform.position).normalized;
+        launchDirection = launchDirection + Vector3.up;
         characterRb.AddForce(launchDirection * bounceForce, ForceMode.Impulse);
         StartCoroutine(pausePlayerMovement(characterMover));
         StartCoroutine(DamageFlash(characterRenderer, characterMaterialColor));
